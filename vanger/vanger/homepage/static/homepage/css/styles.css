@@ -148,7 +148,7 @@ header {
 .slider-for img {
     width: 100%; /* This will make the image fill the container */
     height: auto; /* This will keep the aspect ratio intact */
-    max-width: 750px; /* Adjust the value*/
+    max-width: 740px; /* Adjust the value*/
     max-height: 420px; /* Adjust the value*/
     border-radius: 40px;
     margin: auto;
@@ -161,11 +161,16 @@ header {
     margin: auto;
     width: 1117px;
 }
+
+.slick-list {
+    padding: 0px !important;
+    margin: 0px 50px !important;
+}
 .slider-nav img {
-    width: 100%; /* This will make the image fill the container */
-    height: auto; /* This will keep the aspect ratio intact */
-    max-width: 165px; /* Adjust the value*/
-    max-height: 165px; /* Adjust the value */
+    width: 100%; 
+    height: auto;
+    max-width: 165px;
+    max-height: 165px;
     border-radius: 40px;
     margin: auto;
 }
@@ -186,12 +191,12 @@ header {
 
 .slider-nav .slick-prev {
     left: 0px;
-    top: 55px;
+    top: 40%;
 }
 
 .slider-nav .slick-next {
     right: 0px;
-    top: 55px;
+    top: 40%;
 }
 
 .slick-prev:hover, .slick-next:hover {
