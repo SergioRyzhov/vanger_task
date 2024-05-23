@@ -12,7 +12,7 @@ RUN apt-get update \
     && apt-get purge -y --auto-remove gcc python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-COPY . /app/
+COPY . /app
 
 ENV PYTHONPATH="/app/vanger"
 
