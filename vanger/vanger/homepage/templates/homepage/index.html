@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'homepage/css/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header">
+            <div class="logo">
+                <img src="{% static 'homepage/svg/logo.svg' %}" alt="Example SVG">
+            </div>
+            <div class="header-text-wrapper">
+                <p class="header-text">ПРЕИМУЩЕСТВА</p>
+                <p class="header-text">ФОТОГРАФИИ</p>
+            </div>
+            <button type="button" class="btn btn-danger">ВХОД</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-block">
+        <div class="text-block">
+            <h1>Космическое агенство</h1>
+            <p>Национальное управление по аэронавтике и исследованию космического пространства - ведомство, относящееся к федеральному правительству США и подчиняющееся непосредственно президенту США.</p>
+        </div>
+        <div class="photo-block">
+            <div>
+                <img src="{% static 'homepage/img/advant.jpg' %}" alt="advantages image" class="icon-block">
+            </div>
+            <div>
+                <img src="{% static 'homepage/img/space.jpeg' %}" alt="space image" class="picture">
+            </div>
+        </div>
+    </div>
+
+    <!-- Photo Slider -->
+    <div class="slider-box">
+        <div class="slider-header">
+            <h2>Фотографии</h2>
+        </div>
+        <div class="carousel">
+            <!-- Main Slider -->
+            <div class="slider-for">
+                {% for image in images %}
+                    <div class="main-carousel-photo">
+                        <a href="{{ image.image.url }}" data-fancybox="gallery">
+                            <img src="{{ image.image.url }}" alt="Image">
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Navigation Slider -->
+            <div class="slider-nav">
+                {% for image in images %}
+                    <div>
+                        <img src="{{ image.image.url }}" alt="Thumbnail">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Slick Carousel -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <!-- Include Fancybox -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Initialize the main slider
+            $('.slider-for').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                arrows: false,
+                fade: true,
+                asNavFor: '.slider-nav'
+            });
+
+            // Initialize the navigation slider
+            $('.slider-nav').slick({
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                asNavFor: '.slider-for',
+                dots: true,
+                centerMode: true,
+                focusOnSelect: true,
+                arrows: true,
+                prevArrow: '<button class="slick-prev slick-arrow" aria-label="Previous" type="button">Previous</button>',
+                nextArrow: '<button class="slick-next slick-arrow" aria-label="Next" type="button">Next</button>'
+            });
+        });
+    </script>
+    <!-- Optional: Include Bootstrap JavaScript for certain components -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
