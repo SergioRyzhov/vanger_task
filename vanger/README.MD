@@ -1,6 +1,6 @@
-# NASA Image Gallery for vanger company
+# NASA Image Gallery
 
-This project is a Django-based web application showcasing a gallery of images from NASA(or any other photos). Users can view, navigate, and zoom into the images using a slick carousel and a Fancybox lightbox for a better viewing experience. The gallery images can be managed through the Django admin interface with drag-and-drop sorting functionality.
+This project is a Django-based web application showcasing a gallery of images from NASA(or any other images you like). Users can view, navigate, and zoom into the images using a slick carousel and a Fancybox lightbox for a better viewing experience. The gallery images can be managed through the Django admin interface with drag-and-drop sorting functionality.
 
 ## Features
 
@@ -13,12 +13,14 @@ This project is a Django-based web application showcasing a gallery of images fr
 ## Technologies Used
 
 - Python 3.9
-- Django 4.1
+- Django
 - Django Filer
 - Django Admin Sortable2
 - Bootstrap 5
 - Slick Carousel
 - Fancybox
+- Docker
+- Docker Compose
 
 ## Installation
 
@@ -26,9 +28,8 @@ This project is a Django-based web application showcasing a gallery of images fr
 
 Ensure you have the following installed on your machine:
 
-- Python 3.9
-- pip
-- Virtualenv (optional, but recommended)
+- Docker
+- Docker Compose
 
 ### Steps
 
@@ -39,38 +40,27 @@ Ensure you have the following installed on your machine:
     cd nasa-image-gallery
     ```
 
-2. **Create a virtual environment:**
+2. **Build and run the Docker containers:**
 
     ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    docker-compose up --build
     ```
 
-3. **Install the required packages:**
+3. **Apply migrations:**
+
+    Open a new terminal and run:
 
     ```bash
-    pip install -r req.pip
+    docker-compose exec -it web python manage.py migrate
     ```
 
-4. **Apply migrations:**
+4. **Create a superuser:**
 
     ```bash
-    python manage.py migrate
+    docker-compose exec -it web python manage.py createsuperuser
     ```
 
-5. **Create a superuser:**
-
-    ```bash
-    python manage.py createsuperuser
-    ```
-
-6. **Run the development server:**
-
-    ```bash
-    python manage.py runserver
-    ```
-
-7. **Open your browser and visit:**
+5. **Access the application:**
 
     - Home page: `http://127.0.0.1:8000/`
     - Admin interface: `http://127.0.0.1:8000/admin/`
